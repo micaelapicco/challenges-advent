@@ -11,26 +11,18 @@ Si no hay ninguna diferencia entre las secuencias, devuelve una cadena vacía.`
 function findNaughtyStep(original, modified) {
    let difference = "";
    
-   if (original.length === modified.length) {
+   if (original.length >= modified.length) {
       for (let i = 0; i < original.length; i++) {
        if (original[i] !== modified[i]) {
-           difference = modified[i];
+           difference = original[i];
            break;
          }
       }
-   }
-   if (original.length < modified.length) {
+   }  else  {
       for (let i = 0; i < modified.length; i++) {
-         if (!original.includes(modified[i])) {
+         if (original[i] !== modified[i]) {
             difference = modified[i];
-         }
-      }
-   }
-
-   if (original.length > modified.length) {
-      for (let i = 0; i < original.length; i++) {
-         if (!modified.includes(original[i])) {
-            difference = original[i];
+            break;
          }
       }
    }
@@ -38,8 +30,8 @@ function findNaughtyStep(original, modified) {
    return difference;
 }
    
-const original = 'abde'
-const modified = 'abde'
+const original = 'xxxx'
+const modified = 'xxoxx'
 findNaughtyStep(original, modified)
 const findy = findNaughtyStep(original, modified)
 console.log(original, modified)
